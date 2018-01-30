@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DataService} from './data.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private _data:DataService){
+
+  }
+
+  menus :any;
+
+  ngOnInit(){
+  	this._data.menu.subscribe(res => this.menus = res);
+  	console.log(this.menus);
+
+  }
+
 }

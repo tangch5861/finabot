@@ -5,8 +5,9 @@
     "\\src\\app",
     "\\src\\app\\about",
     "\\src\\app\\home",
-    "\\src\\assets"
+    "\\src\\assets",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\app.component.html",
+  "SelectedNode": "\\src\\index.html",
   "PreviewInSolutionExplorer": false
 }
