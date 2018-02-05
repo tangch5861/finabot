@@ -8,285 +8,263 @@
 <div class="container padding-bottom-2x mb-2">
 	<div class="row align-items-center padding-bottom-2x">
 		<div class="col-md-12">
-			<div class="checkout-steps"><a href="#">4. Health</a><a class="active" href="#"><span class="angle"></span>3. Lifestyle</a><a class="completed" href="#"><span class="step-indicator icon-circle-check"></span><span class="angle"></span>2. Financial Status</a><a class="completed" href="#"><span class="step-indicator icon-circle-check"></span><span class="angle"></span>1. Profile</a></div>
+			<div class="checkout-steps">
+			<a [ngClass]="{'completed': !completed_4, 'active': completed_4 }" (click)="GoToNext(4)" >
+				<span *ngIf="done_4 && !completed_4" class="step-indicator icon-circle-check"></span>4. Health</a>
+			<a [ngClass]="{'completed': !completed_3, 'active': completed_3 }" (click)="GoToNext(3)" >
+				<span *ngIf="done_3 && !completed_3" class="step-indicator icon-circle-check"></span><span class="angle"></span>3. Lifestyle</a>
+			<a [ngClass]="{'completed': !completed_2, 'active': completed_2 }" (click)="GoToNext(2)" >
+				<span *ngIf="done_2 && !completed_2" class="step-indicator icon-circle-check"></span><span class="angle"></span>2. Financial Status</a>
+			<a [ngClass]="{'completed': !completed_1, 'active': completed_1 }"  (click)="GoToNext(1)">
+				<span *ngIf="done_1 && !completed_1" class="step-indicator icon-circle-check"></span><span class="angle"></span>1. Profile</a>
+			</div>
 		</div>
 		<div class="col-md-12 text-md-left text-center">
-			<form class="row" id="interviewProfile">
-				<div class="col-md-12">
-					<h2 class="text-center">Let's get to know you better</h2>
-					<p class="text-center">By the end of interview, you will get your financial report. Good luck !</p>
-					<div class="mt-30 hidden-md-up"></div>	    	
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-fn">First Name</label>
-						<input class="form-control" type="text" id="account-fn" value="Daniel" required="">
+			<div id="interviewFinancial" class="fadeInLeftBig animated" *ngIf="completed_1">
+				<form class="row" id="interviewProfile">
+					<div class="col-md-12">
+						<h2 class="text-center">Let's get to know you better</h2>
+						<p class="text-center">By the end of interview, you will get your financial report. Good luck !</p>
+						<div class="mt-30 hidden-md-up"></div>	    	
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-ln">Last Name</label>
-						<input class="form-control" type="text" id="account-ln" value="Adams" required="">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-fn">First Name</label>
+							<input class="form-control" type="text" id="account-fn" value="Daniel" required="">
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-email">E-mail Address</label>
-						<input class="form-control" type="email" id="account-email" value="daniel.adams@mail.com">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-ln">Last Name</label>
+							<input class="form-control" type="text" id="account-ln" value="Adams" required="">
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-phone">Phone Number</label>
-						<input class="form-control" type="text" id="account-phone" value="+7(805) 348 95 72" required="">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-email">E-mail Address</label>
+							<input class="form-control" type="email" id="account-email" value="daniel.adams@mail.com">
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-pass">Date of Birth</label>
-						<input class="form-control" type="date" id="date-input" value="2017-06-13">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-phone">Phone Number</label>
+							<input class="form-control" type="text" id="account-phone" value="+7(805) 348 95 72" required="">
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-confirm-pass">Gender</label>
-						<select class="form-control" id="select-input">
-							<option>Choose option...</option>
-							<option>Male</option>
-							<option>Female</option>
-						</select>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-pass">Date of Birth</label>
+							<input class="form-control" type="date" id="date-input" value="2017-06-13">
+						</div>
 					</div>
-				</div>
-				<div class="col-12">
-					<hr class="mt-2 mb-3">
-					<div class="d-flex flex-wrap justify-content-between align-items-center">
-						<button class="btn btn-primary margin-right-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Geat!" data-toast-message="We are now friend !">Next</button>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">Gender</label>
+							<select class="form-control" id="select-input">
+								<option>Choose option...</option>
+								<option>Male</option>
+								<option>Female</option>
+							</select>
+						</div>
 					</div>
-				</div>
-			</form>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">Are you marry?</label><br/>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input class="custom-control-input" type="radio" id="ex-radio-4" name="marry">
+								<label class="custom-control-label" for="ex-radio-4">Yes</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input class="custom-control-input" type="radio" id="ex-radio-5" name="marry" checked="">
+								<label class="custom-control-label" for="ex-radio-5">No</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">How many kids do you have?</label>
+							<select class="form-control" id="select-input">
+								<option>Choose option...</option>
+								<option>1</option>
+								<option>2</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-12">
+						<hr class="mt-2 mb-3">
+						<div class="  align-items-center text-right">
+							<button class="btn btn-primary margin-right-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Geat!" data-toast-message="We are now friend !" (click)="GoToNext(2)" >Next</button>
+						</div>
+					</div>
+				</form>
+			</div>
 
-<div id="interviewFinancial" class="fadeInLeftBig animated">
-			<form class="row">
-				<div class="col-md-12" >
-					<h2 class="text-center">Awesome {{firstName}} {{lastName}}, we are friend now. </h2>
-					<p class="text-center">Tell me more about your financial status, we recommand good plan for you!</p>
-					<div class="mt-30 hidden-md-up"></div>	    	
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-fn">Do you own house(s)? How many?</label>
-						<input class="form-control" type="text" id="account-fn" value="Daniel" required="">
+			<div id="interviewFinancial" class="fadeInLeftBig animated" *ngIf="completed_2">
+				<form class="row">
+					<div class="col-md-12" >
+						<h2 class="text-center">Awesome , we are friend now. </h2>
+						<p class="text-center">Tell me more about your financial status, we recommand good plan for you!</p>
+						<div class="mt-30 hidden-md-up"></div>	    	
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-ln">Do you own car(s)?</label>
-						<input class="form-control" type="text" id="account-ln" value="Adams" required="">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-fn">Do you own house(s)? How many?</label>
+							<input class="form-control" type="text" id="account-fn" value="2" required="">
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-email">E-mail Address</label>
-						<input class="form-control" type="email" id="account-email" value="daniel.adams@mail.com" disabled="">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">What is your occupation?</label>
+							<select class="form-control" id="select-input">
+								<option>Choose option...</option>
+								<option>Account</option>
+								<option>Teacher</option>
+							</select>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-phone">Phone Number</label>
-						<input class="form-control" type="text" id="account-phone" value="+7(805) 348 95 72" required="">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-ln">Do you own car(s)?</label><br/>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input class="custom-control-input" type="radio" id="ex-radio-4" name="car">
+								<label class="custom-control-label" for="ex-radio-4">Yes</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input class="custom-control-input" type="radio" id="ex-radio-5" name="car" checked="">
+								<label class="custom-control-label" for="ex-radio-5">No</label>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-pass">Date of Birth</label>
-						<input class="form-control" type="date" id="date-input" value="2017-06-13">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">What is your year income?</label>
+							<input class="form-control" type="text" id="account-fn" value="60000" required="">
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-confirm-pass">Gender</label>
-						<select class="form-control" id="select-input">
-							<option>Choose option...</option>
-							<option>Male</option>
-							<option>Female</option>
-						</select>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-ln">Do you consider yourself a traveller?</label><br/>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input class="custom-control-input" type="radio" id="ex-radio-4" name="traveller">
+								<label class="custom-control-label" for="ex-radio-4">Yes</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input class="custom-control-input" type="radio" id="ex-radio-5" name="traveller" checked="">
+								<label class="custom-control-label" for="ex-radio-5">No</label>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="col-12">
-					<hr class="mt-2 mb-3">
-					<div class="d-flex flex-wrap justify-content-between align-items-center">
-						<button class="btn btn-primary margin-right-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Geat!" data-toast-message="We are now friend !">Next</button>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">Do you have extra income? etc. Rental, bonus..</label>
+							<input class="form-control" type="text" id="account-fn" value="1000" required="">
+						</div>
 					</div>
-				</div>
-			</form>
-</div>
+					<div class="col-12">
+						<hr class="mt-2 mb-3">
+						<div class="  align-items-center text-right">
+							<button class="btn btn-primary margin-right-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Geat!" data-toast-message="We are now friend !" (click)="GoToNext(3)" >Next</button>
+						</div>
+					</div>
+				</form>
+			</div>
 
+			<div id="interviewFinancial" class="fadeInLeftBig animated" *ngIf="completed_3">
+				<form class="row">
+					<div class="col-md-12" >
+						<h2 class="text-center">Good job, let's talk about lifestyle. </h2>
+						<p class="text-center">Let me know you better, and i will help you improve more.</p>
+						<div class="mt-30 hidden-md-up"></div>	    	
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-fn">How much you have spend online shopping in month? </label>
+							<input class="form-control" type="text" id="account-fn" value="300" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-fn">How much you have spend physical shops in month? </label>
+							<input class="form-control" type="text" id="account-fn" value="500" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">In which category you like to shop more?</label>
+							<select class="form-control" id="select-input">
+								<option>Choose option...</option>
+								<option>Cloths</option>
+								<option>Shoes</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-confirm-pass">How many times you have watch movies in a year?</label>
+							<input class="form-control" type="text" id="account-fn" value="20" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-fn">How much in total of household you spend in month? </label>
+							<input class="form-control" type="text" id="account-fn" value="1500" required="">
+						</div>
+					</div>
+					<div class="col-12">
+						<hr class="mt-2 mb-3">
+						<div class="  align-items-center text-right">
+							<button class="btn btn-primary margin-right-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Geat!" data-toast-message="We are now friend !" (click)="GoToNext(4)" >Next</button>
+						</div>
+					</div>
+				</form>
+			</div>
 
-<div id="interviewFinancial" class="fadeInLeftBig animated">
-			<form class="row">
-				<div class="col-md-12" >
-					<h2 class="text-center">Awesome {{firstName}} {{lastName}}, we are friend now. </h2>
-					<p class="text-center">Tell me more about your financial status, we recommand good plan for you!</p>
-					<div class="mt-30 hidden-md-up"></div>	    	
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-fn">Do you own house(s)? How many?</label>
-						<input class="form-control" type="text" id="account-fn" value="Daniel" required="">
+			<div id="interviewFinancial" class="fadeInLeftBig animated" *ngIf="completed_4">
+				<form class="row">
+					<div class="col-md-12" >
+						<h2 class="text-center">Geat, you did well so far. </h2>
+						<p class="text-center">I'm now as a heath consultan for you!</p>
+						<div class="mt-30 hidden-md-up"></div>	    	
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-ln">Do you own car(s)?</label>
-						<input class="form-control" type="text" id="account-ln" value="Adams" required="">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-fn">Do you any disease right now?</label><br/>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input class="custom-control-input" type="radio" id="ex-radio-4" name="traveller">
+								<label class="custom-control-label" for="ex-radio-4">Yes</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+								<input class="custom-control-input" type="radio" id="ex-radio-5" name="traveller" checked="">
+								<label class="custom-control-label" for="ex-radio-5">No</label>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-email">E-mail Address</label>
-						<input class="form-control" type="email" id="account-email" value="daniel.adams@mail.com" disabled="">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-ln">what is your disease?</label>
+							<input class="form-control" type="text" id="account-ln" value="heart disease" required="">
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-phone">Phone Number</label>
-						<input class="form-control" type="text" id="account-phone" value="+7(805) 348 95 72" required="">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-email">How much you have spend on drugs?</label>
+							<input class="form-control" type="email" id="account-email" value="200" >
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-pass">Date of Birth</label>
-						<input class="form-control" type="date" id="date-input" value="2017-06-13">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="account-phone">Do often exercise yourself?</label>
+							<input class="form-control" type="text" id="account-phone" value="once a week" required="">
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-confirm-pass">Gender</label>
-						<select class="form-control" id="select-input">
-							<option>Choose option...</option>
-							<option>Male</option>
-							<option>Female</option>
-						</select>
+					<div class="col-12">
+						<hr class="mt-2 mb-3">
+						<div class="  align-items-center text-right">
+							<button class="btn btn-primary margin-right-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Geat!" data-toast-message="We are now friend !" (click)="InterviewCompleted()" >Generate Your Report</button>
+						</div>
 					</div>
-				</div>
-				<div class="col-12">
-					<hr class="mt-2 mb-3">
-					<div class="d-flex flex-wrap justify-content-between align-items-center">
-						<button class="btn btn-primary margin-right-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Geat!" data-toast-message="We are now friend !">Next</button>
-					</div>
-				</div>
-			</form>
-</div>
-<div id="interviewFinancial" class="fadeInLeftBig animated">
-			<form class="row">
-				<div class="col-md-12" >
-					<h2 class="text-center">Awesome {{firstName}} {{lastName}}, we are friend now. </h2>
-					<p class="text-center">Tell me more about your financial status, we recommand good plan for you!</p>
-					<div class="mt-30 hidden-md-up"></div>	    	
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-fn">Do you own house(s)? How many?</label>
-						<input class="form-control" type="text" id="account-fn" value="Daniel" required="">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-ln">Do you own car(s)?</label>
-						<input class="form-control" type="text" id="account-ln" value="Adams" required="">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-email">E-mail Address</label>
-						<input class="form-control" type="email" id="account-email" value="daniel.adams@mail.com" disabled="">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-phone">Phone Number</label>
-						<input class="form-control" type="text" id="account-phone" value="+7(805) 348 95 72" required="">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-pass">Date of Birth</label>
-						<input class="form-control" type="date" id="date-input" value="2017-06-13">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-confirm-pass">Gender</label>
-						<select class="form-control" id="select-input">
-							<option>Choose option...</option>
-							<option>Male</option>
-							<option>Female</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-12">
-					<hr class="mt-2 mb-3">
-					<div class="d-flex flex-wrap justify-content-between align-items-center">
-						<button class="btn btn-primary margin-right-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Geat!" data-toast-message="We are now friend !">Next</button>
-					</div>
-				</div>
-			</form>
-</div>
-<div id="interviewFinancial" class="fadeInLeftBig animated">
-			<form class="row">
-				<div class="col-md-12" >
-					<h2 class="text-center">Awesome {{firstName}} {{lastName}}, we are friend now. </h2>
-					<p class="text-center">Tell me more about your financial status, we recommand good plan for you!</p>
-					<div class="mt-30 hidden-md-up"></div>	    	
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-fn">Do you own house(s)? How many?</label>
-						<input class="form-control" type="text" id="account-fn" value="Daniel" required="">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-ln">Do you own car(s)?</label>
-						<input class="form-control" type="text" id="account-ln" value="Adams" required="">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-email">E-mail Address</label>
-						<input class="form-control" type="email" id="account-email" value="daniel.adams@mail.com" disabled="">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-phone">Phone Number</label>
-						<input class="form-control" type="text" id="account-phone" value="+7(805) 348 95 72" required="">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-pass">Date of Birth</label>
-						<input class="form-control" type="date" id="date-input" value="2017-06-13">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="account-confirm-pass">Gender</label>
-						<select class="form-control" id="select-input">
-							<option>Choose option...</option>
-							<option>Male</option>
-							<option>Female</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-12">
-					<hr class="mt-2 mb-3">
-					<div class="d-flex flex-wrap justify-content-between align-items-center">
-						<button class="btn btn-primary margin-right-none" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Geat!" data-toast-message="We are now friend !">Next</button>
-					</div>
-				</div>
-			</form>
-</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>
