@@ -16,6 +16,9 @@ export class InterviewComponent implements OnInit {
   done_3: boolean = false;
   done_4: boolean = false;
 
+  firstName: string = '';  
+  lastName: string = '';
+
   constructor() { }
 
   ngOnInit() {

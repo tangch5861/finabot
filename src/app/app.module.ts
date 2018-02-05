@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule } from '@angular/forms'
 import { DataService } from './data.service';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -29,7 +30,8 @@ import { InterviewComponent } from './interview/interview.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

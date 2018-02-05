@@ -30,13 +30,13 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-fn">First Name</label>
-							<input class="form-control" type="text" id="account-fn" value="Daniel" required="">
+							<input class="form-control" type="text" name="firstName" [(ngModel)]="firstName" required="">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="account-ln">Last Name</label>
-							<input class="form-control" type="text" id="account-ln" value="Adams" required="">
+							<input class="form-control" type="text" name="lastName" [(ngModel)]="lastName" required="">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -102,7 +102,7 @@
 			<div id="interviewFinancial" class="fadeInLeftBig animated" *ngIf="completed_2">
 				<form class="row">
 					<div class="col-md-12" >
-						<h2 class="text-center">Awesome , we are friend now. </h2>
+						<h2 class="text-center">Awesome {{firstName}} {{lastName}}, we are friend now. </h2>
 						<p class="text-center">Tell me more about your financial status, we recommand good plan for you!</p>
 						<div class="mt-30 hidden-md-up"></div>	    	
 					</div>
