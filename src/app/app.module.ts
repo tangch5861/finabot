@@ -14,6 +14,10 @@ import { LoansComponent } from './loans/loans.component';
 import { InvestmentComponent } from './investment/investment.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InterviewComponent } from './interview/interview.component';
+import { InsuranceTravelComponent } from './insurance-travel/insurance-travel.component';
+import { InsuranceMotorComponent } from './insurance-motor/insurance-motor.component';
+import { LoginComponent } from './login/login.component';
+import { ItemHolderComponent } from './item-holder/item-holder.component';
 
 
 @NgModule({
@@ -26,7 +30,11 @@ import { InterviewComponent } from './interview/interview.component';
     LoansComponent,
     InvestmentComponent,
     ProfileComponent,
-    InterviewComponent
+    InterviewComponent,
+    InsuranceTravelComponent,
+    InsuranceMotorComponent,
+    LoginComponent,
+    ItemHolderComponent
   ],
   imports: [
     BrowserModule,

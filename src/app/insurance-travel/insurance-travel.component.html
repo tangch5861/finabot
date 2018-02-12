@@ -1,0 +1,55 @@
+<div class="page-title">
+	<div class="container">
+		<form class="row" >
+			<div class="col-md-12">
+				<div class="form-group">
+						<h2 class="text-center">Travel Insurance</h2>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="account-fn">Country</label>
+							<select class="form-control" id="select-input">
+								<option>Malaysia</option>
+								<option>Singapore</option>
+							</select>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="account-fn">Start Date</label>
+							<input class="form-control" type="date" id="date-input" value="2017-06-13">
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="account-fn">End Date</label>
+							<input class="form-control" type="date" id="date-input" value="2017-06-13">
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="account-fn">Type of plan</label>
+							<select class="form-control" id="select-input">
+								<option>Single</option>
+								<option>Annual</option>
+							</select>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="account-fn">Number of traveller</label>
+							<select class="form-control" id="select-input">
+								<option>1</option>
+								<option>2</option>
+							</select>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>
+<div class="container padding-bottom-2x mb-2">
+	<!-- Products Grid-->
+	<app-item-holder [parentData]="items"></app-item-holder>
+</div>

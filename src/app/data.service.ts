@@ -15,11 +15,11 @@ export class DataService {
 		   	"sub":[
 			   	{
 			   		"title":"Travel",
-			  		"link": ""
+			  		"link": "insurance-travel"
 				},
 			   	{
 			   		"title":"Motor",
-			  		"link": ""
+			  		"link": "insurance-motor"
 				}
 			]
 		},
@@ -28,7 +28,7 @@ export class DataService {
 	    	"link": "credit-card",
 		   	"sub":[{
 		   		"title":"Travel",
-		  		"link": ""
+		  		"link": "insurance-travel"
 			}]
 
 	    },

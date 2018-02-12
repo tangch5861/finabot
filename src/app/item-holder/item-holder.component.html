@@ -1,0 +1,45 @@
+
+        <!-- Shop Toolbar-->
+        <div class="shop-toolbar padding-bottom-1x mb-2">
+          <div class="column">
+            <div class="shop-sorting">
+              <label for="sorting">Sort by:</label>
+              <select class="form-control" id="sorting">
+                <option>Popularity</option>
+                <option>Low - High Price</option>
+                <option>High - Low Price</option>
+                <option>Avarage Rating</option>
+                <option>A - Z Order</option>
+                <option>Z - A Order</option>
+              </select><span class="text-muted">Showing:&nbsp;</span><span>1 - 12 items</span>
+            </div>
+          </div>
+          <div class="column">
+            <div class="shop-view"><a class="grid-view active" href="shop-grid-ns.html"><span></span><span></span><span></span></a><a class="list-view" href="shop-list-ns.html"><span></span><span></span><span></span></a></div>
+          </div>
+        </div>
+        <div class="isotope-grid cols-4 mb-2">
+          <div class="gutter-sizer"></div>
+          <div class="grid-sizer"></div>
+          <!-- Product-->
+          <div class="grid-item" *ngFor="let item of items">
+            <div class="product-card">
+              <div class="product-badge text-danger">{{item.discount}}</div><a class="product-thumb" href="shop-single.html"><img src="{{item.imgPath}}" alt="Product"></a>
+                <div class="rating-stars">
+                	<i class="icon-star" [ngClass]="{'filled': item.noStars >= 1}"></i>
+                	<i class="icon-star" [ngClass]="{'filled': item.noStars >= 2}"></i>
+                	<i class="icon-star" [ngClass]="{'filled': item.noStars >= 3}"></i>
+                	<i class="icon-star" [ngClass]="{'filled': item.noStars >= 4}"></i>
+                	<i class="icon-star" [ngClass]="{'filled': item.noStars >= 5}"></i>
+                </div>
+              <h3 class="product-title"><a href="shop-single.html">{{item.title}}</a></h3>
+              <h4 class="product-price">
+                <del>{{item.oldPrice}}</del>{{item.price}}
+              </h4>
+              <div class="product-buttons">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!" routerLink="{{item.btnLink}}">{{btnText}}</button>
+              </div>
+            </div>
+          </div>
+        </div>

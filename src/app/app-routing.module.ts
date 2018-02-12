@@ -8,6 +8,9 @@ import { InvestmentComponent } from './investment/investment.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InterviewComponent } from './interview/interview.component';
+import { InsuranceTravelComponent } from './insurance-travel/insurance-travel.component';
+import { InsuranceMotorComponent } from './insurance-motor/insurance-motor.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 	{
@@ -41,6 +44,18 @@ const routes: Routes = [
 	{
 		path: 'interview',
 		component: InterviewComponent
+	},
+	{
+		path: 'insurance-travel',
+		component: InsuranceTravelComponent
+	},
+	{
+		path: 'insurance-motor',
+		component: InsuranceMotorComponent
+	},
+	{
+		path: 'login',
+		component: LoginComponent
 	}
 ];
 
