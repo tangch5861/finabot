@@ -10,7 +10,7 @@ declare var $:any;
 export class ItemHolderComponent implements OnInit {
 
 	@Input("parentData") public items;
-	btnText : string = "Add to Cart";
+	btnText : string = "Buy Now";
 
   constructor() { 
   }

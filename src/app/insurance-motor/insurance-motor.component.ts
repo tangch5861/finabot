@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InsuranceMotorComponent implements OnInit {
 
-	private items = [
+	public items = [
 	    {
 	    	"discount": "20% Off", 
 	    	"imgPath": "assets/img/shop/products/05.jpg",

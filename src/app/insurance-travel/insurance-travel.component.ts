@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class InsuranceTravelComponent implements OnInit {
 
 
-	private items = [
+	public items = [
 	    {
 	    	"discount": "50% Off", 
 	    	"imgPath": "assets/img/shop/products/01.jpg",
