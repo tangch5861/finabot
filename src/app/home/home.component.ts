@@ -10,17 +10,15 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-	  this.load_js();
+       this.loadScript('assets/js/scripts.min.js');
+       this.loadScript('assets/js/vendor.min.js');
   }
-
-	load_js()
-   	{
-  		//use to reload the bundle external js scripts
-      var head= document.getElementsByTagName('head')[0];
-      var script= document.createElement('script');
-      script.type= 'text/javascript';
-      script.src= 'scripts.bundle.js';
-      head.appendChild(script);
-   	}
+	public loadScript(url) {
+	    console.log('preparing to load...')
+	    let node = document.createElement('script');
+	    node.src = url;
+	    node.type = 'text/javascript';
+	    document.getElementsByTagName('body')[0].appendChild(node);
+	 }
 
 }
