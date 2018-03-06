@@ -17,9 +17,9 @@ export class AppComponent {
   menus :any;
 
   ngOnInit(){
-  	this._data.menu.subscribe(res => this.menus = res);
-  	console.log(this.menus);
 
+    this._data.GetMenuItems().subscribe(res => this.menus = res);
+    
   }
 
 }
