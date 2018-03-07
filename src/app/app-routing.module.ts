@@ -59,7 +59,7 @@ const routes: Routes = [
 		path: 'insurance',
     	canActivateChild: [AlwaysAuthChildrenGuard],
 		component: InsuranceComponent,
-		children: [
+		/*children: [
 			{
 				path: 'insurance-travel',
 				component: InsuranceTravelComponent
@@ -68,7 +68,7 @@ const routes: Routes = [
 				path: 'insurance-motor',
 				component: InsuranceMotorComponent
 			}
-		]
+		]*/
 	},
 	{
 		path: 'credit-card',
@@ -98,6 +98,14 @@ const routes: Routes = [
 	{
 		path: 'login',
 		component: LoginComponent
+	},
+	{
+		path: 'insurance-travel',
+		component: InsuranceTravelComponent
+	},
+	{
+		path: 'insurance-motor',
+		component: InsuranceMotorComponent
 	}
 ];
 
