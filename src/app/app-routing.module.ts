@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule,Injectable } from '@angular/core';
+import { Routes, RouterModule, Router, CanActivate, CanActivateChild } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { InsuranceComponent } from './insurance/insurance.component';
 import { CreditCardComponent } from './credit-card/credit-card.component';
@@ -11,8 +11,6 @@ import { InterviewComponent } from './interview/interview.component';
 import { InsuranceTravelComponent } from './insurance-travel/insurance-travel.component';
 import { InsuranceMotorComponent } from './insurance-motor/insurance-motor.component';
 import { LoginComponent } from './login/login.component';
-import { CanActivate, CanActivateChild } from "@angular/router";
-import { Injectable } from '@angular/core';
 
 
 //Guard
@@ -38,14 +36,15 @@ class UserService {
 
 @Injectable()
 class OnlyLoggedInUsersGuard implements CanActivate { 
-  constructor(private userService: UserService) {}; 
+  constructor(private userService: UserService, private router: Router) {}; 
 
   canActivate() {
     console.log("OnlyLoggedInUsers");
     if (this.userService.isLoggedIn()) { 
       return true;
     } else {
-      window.alert("You don't have permission to view this page"); 
+      console.log("You don't have permission to view this page"); 
+      this.router.navigate(['/login']);
       return false;
     }
   }
