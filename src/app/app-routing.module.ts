@@ -11,6 +11,45 @@ import { InterviewComponent } from './interview/interview.component';
 import { InsuranceTravelComponent } from './insurance-travel/insurance-travel.component';
 import { InsuranceMotorComponent } from './insurance-motor/insurance-motor.component';
 import { LoginComponent } from './login/login.component';
+import { CanActivate, CanActivateChild } from "@angular/router";
+import { Injectable } from '@angular/core';
+
+
+//Guard
+class AlwaysAuthGuard implements CanActivate {
+  canActivate() {
+    console.log("AlwaysAuthGuard");
+    return true;
+  }
+}
+
+class AlwaysAuthChildrenGuard implements CanActivateChild {
+  canActivateChild() {
+    console.log("AlwaysAuthChildrenGuard");
+    return true;
+  }
+}
+
+class UserService {
+  isLoggedIn(): boolean {
+    return false;
+  }
+}
+
+@Injectable()
+class OnlyLoggedInUsersGuard implements CanActivate { 
+  constructor(private userService: UserService) {}; 
+
+  canActivate() {
+    console.log("OnlyLoggedInUsers");
+    if (this.userService.isLoggedIn()) { 
+      return true;
+    } else {
+      window.alert("You don't have permission to view this page"); 
+      return false;
+    }
+  }
+}
 
 const routes: Routes = [
 	{
@@ -19,7 +58,18 @@ const routes: Routes = [
 	},
 	{
 		path: 'insurance',
-		component: InsuranceComponent
+    	canActivateChild: [AlwaysAuthChildrenGuard],
+		component: InsuranceComponent,
+		children: [
+			{
+				path: 'insurance-travel',
+				component: InsuranceTravelComponent
+			},
+			{
+				path: 'insurance-motor',
+				component: InsuranceMotorComponent
+			}
+		]
 	},
 	{
 		path: 'credit-card',
@@ -39,19 +89,12 @@ const routes: Routes = [
 	},
 	{
 		path: 'profile',
+    	canActivate: [OnlyLoggedInUsersGuard, AlwaysAuthGuard],
 		component: ProfileComponent
 	},
 	{
 		path: 'interview',
 		component: InterviewComponent
-	},
-	{
-		path: 'insurance-travel',
-		component: InsuranceTravelComponent
-	},
-	{
-		path: 'insurance-motor',
-		component: InsuranceMotorComponent
 	},
 	{
 		path: 'login',
@@ -61,6 +104,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    AlwaysAuthGuard,
+    AlwaysAuthChildrenGuard,
+    UserService,
+    OnlyLoggedInUsersGuard
+  ]
 })
 export class AppRoutingModule { }
