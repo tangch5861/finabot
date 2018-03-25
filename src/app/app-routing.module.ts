@@ -14,28 +14,28 @@ import { LoginComponent } from './login/login.component';
 
 
 //Guard
-class AlwaysAuthGuard implements CanActivate {
+export class AlwaysAuthGuard implements CanActivate {
   canActivate() {
     console.log("AlwaysAuthGuard");
     return true;
   }
 }
 
-class AlwaysAuthChildrenGuard implements CanActivateChild {
+export class AlwaysAuthChildrenGuard implements CanActivateChild {
   canActivateChild() {
     console.log("AlwaysAuthChildrenGuard");
     return true;
   }
 }
 
-class UserService {
+export class UserService {
   isLoggedIn(): boolean {
     return false;
   }
 }
 
 @Injectable()
-class OnlyLoggedInUsersGuard implements CanActivate { 
+export class OnlyLoggedInUsersGuard implements CanActivate { 
   constructor(private userService: UserService, private router: Router) {}; 
 
   canActivate() {
@@ -50,7 +50,7 @@ class OnlyLoggedInUsersGuard implements CanActivate {
   }
 }
 
-const routes: Routes = [
+export const routes: Routes = [
 	{
 		path: '',
 		component: HomeComponent

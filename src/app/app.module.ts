@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms'
 import { DataService } from './data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpErrorHandler }     from './http-error-handler.service';
+import { MessageService }       from './message.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -44,7 +46,9 @@ import { ItemHolderComponent } from './item-holder/item-holder.component';
     FormsModule
   ],
   providers: [
-    DataService
+    DataService,
+    MessageService,
+    HttpErrorHandler
   ],
   bootstrap: [AppComponent]
 })
